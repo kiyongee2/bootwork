@@ -1,0 +1,23 @@
+package com.khit.study.service;
+
+import java.util.Date;
+
+import org.springframework.stereotype.Controller;
+
+import com.khit.study.entity.BoardVO;
+
+@Controller
+public class BoardService {
+	
+	//상세보기
+	public BoardVO getBoard() {
+		//게시글 1건 생성
+		BoardVO board = new BoardVO();
+		board.setId(1);
+		board.setTitle("제목");
+		board.setWriter("홍길동");
+		board.setContent("내용입니다...");
+		board.setCreatedDate(new Date());
+		return board;
+	}
+}

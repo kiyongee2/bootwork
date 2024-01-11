@@ -1,0 +1,5 @@
+package com.khit.study.entity;
+
+public class BoardVO {
+
+}

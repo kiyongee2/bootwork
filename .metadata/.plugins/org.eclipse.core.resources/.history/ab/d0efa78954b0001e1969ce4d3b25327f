@@ -1,0 +1,2 @@
+# static 설정
+spring.mvc.static-path-pattern="/static/**"
