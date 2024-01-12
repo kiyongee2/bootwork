@@ -1,0 +1,7 @@
+@charset "UTF-8";
+.wrap{
+	width: 1000px;
+	margin: 30px auto;
+	text-align: center;
+}
+h1{color: blue;}

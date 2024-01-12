@@ -1,0 +1,28 @@
+package com.khit.study.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.khit.study.entity.Board;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+public class BoardController {
+	
+	//글쓰기 페이지
+	@GetMapping("/board/write")
+	public String writeForm() {
+		return "/board/write";
+	}
+	
+	//글쓰기 처리
+	@PostMapping("/board/write")
+	public String write(@ModelAttribute Board board) {
+		log.info("board:" + board);
+		return "/board/";
+	}
+}

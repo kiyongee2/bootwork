@@ -1,4 +1,6 @@
 INDEX VERSION 1.134
+C:\bootworks\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\505142384.index
+\jwboot\src\main\java
 C:\bootworks\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3354127831.index
 \jwboot\src\main\java
 C:\bootworks\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1150511146.index

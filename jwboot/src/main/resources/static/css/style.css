@@ -1,7 +1,11 @@
 @charset "UTF-8";
-.wrap{
-	width: 1000px;
-	margin: 30px auto;
-	text-align: center;
-}
+.wrap{width: 1000px; margin: 30px auto; text-align: center;}
 h1{color: blue;}
+a{text-decoration: none;}
+
+.tbl_write{width: 600px; margin: 0 auto;
+	border-collapse: collapse;}
+.tbl_write th, td{border: 1px solid #ccc; padding: 6px;}
+.tbl_write thead{background-color: #eee;}
+.tbl_write input[type="text"]{width: 580px; height: 25px;}
+.tbl_write textarea{width: 580px; height: 300px;}
