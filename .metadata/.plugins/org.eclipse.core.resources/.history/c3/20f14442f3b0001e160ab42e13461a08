@@ -1,0 +1,53 @@
+package com.khit.study.repository;
+
+import java.sql.Timestamp;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.khit.study.entity.Board;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@SpringBootTest
+public class BoardRepositoryTest {
+	
+	@Autowired
+	private BoardRepository boardRepository;
+	
+	//게시글 생성
+	@Test
+	public void insertBoard() {
+		/*Board board = new Board();
+		board.setTitle("가입 인사");
+		board.setWriter("김신입");
+		board.setContent("안녕하세요.");
+		board.setCreatedDate(new Timestamp(System.currentTimeMillis()));*/
+		
+		/*Board board = Board.builder()
+				.title("가입인사2")
+				.writer("우영우")
+				.content("좋은 하루 되세요~")
+				.createdDate(new Timestamp(System.currentTimeMillis()))
+				.build();*/
+		
+		//db에 저장
+		//boardRepository.save(board);
+	}
+	
+	@Test
+	public void getBoardList() {
+		//db의 게시글 목록 가져오기
+		List<Board> boardList = boardRepository.findAll();
+		
+		//boardList 출력
+		for(Board board : boardList)
+			log.info(board.toString());
+			
+	}
+	
+	
+}

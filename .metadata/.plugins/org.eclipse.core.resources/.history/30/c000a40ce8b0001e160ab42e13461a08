@@ -1,0 +1,17 @@
+package com.khit.study.entity;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+@Data
+public class Board {
+	private int id;
+	private String title;
+	private String writer;
+	private String content;
+	private Timestamp createdDate;
+}
