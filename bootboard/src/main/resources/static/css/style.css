@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#container{width: 1200px; margin:30px auto;}
+h2{color: #b00; text-align: center}
+ul li{list-style: none; margin: 16px;}
+
+/* index 스타일 */
+.main-img{text-align: center;}
+.menu{text-align: center;}
+
+/* join 스타일 */
+.joinform{width: 420px; margin: 0 auto;}
+.joinform label{width: 100px; float: left;}
+.joinform input{padding: 4px;}
