@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원수정...</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div id="container">
+		<h2>회원 수정</h2>
+		<div class="detail">
+		<form th:action="@{/member/update}" method="post">
+		   <input type="hidden" name="id" th:value="${member.id}">
+		   <fieldset>
+		  	<ul>
+		  		<li>
+		  			<label for="memberEmail">이메일</label>
+		  			<input type="text" name="memberEmail" readonly
+		  				id="memberEmail" th:value="${member.memberEmail}">
+		  		</li>
+		  		<li>
+		  			<label for="memberPassword">비밀번호</label>
+		  			<input type="password" name="memberPassword"
+		  			    id="memberPassword" th:value="${member.memberPassword}">
+		  		</li>
+		  		<li>
+		  			<label for="memberName">이름</label>
+		  			<input type="text" name="memberName"
+		  			    id="memberName" th:value="${member.memberName}">
+		  		</li>
+		  		<li>
+		  			<label for="memberAge">나이</label>
+		  			<input type="text" name="memberAge"
+		  			    id="memberAge" th:value="${member.memberAge}">
+		  		</li>
+		  	    <li>
+		  			<button type="submit">수정하기</button>
+		  			<button type="reset">취소하기</button>
+		  		</li>
+		  	</ul>
+	  	  </fieldset>
+	  	 </form>
+	  	</div>
+	</div>
+</body>
+</html>

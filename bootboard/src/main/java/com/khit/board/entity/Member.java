@@ -40,4 +40,18 @@ public class Member {
 		
 		return member;
 	}
+	
+	//수정을 위한 정적 메서드(id 포함)
+	public static Member toUpdateEntity(MemberDTO memberDTO) {
+		Member member = new Member();
+		member.setId(memberDTO.getId());
+		member.setMemberEmail(memberDTO.getMemberEmail());
+		member.setMemberPassword(memberDTO.getMemberPassword());
+		member.setMemberName(memberDTO.getMemberName());
+		member.setMemberAge(memberDTO.getMemberAge());
+		
+		return member;
+	}
+	
+	
 }

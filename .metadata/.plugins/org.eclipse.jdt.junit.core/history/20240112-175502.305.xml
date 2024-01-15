@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="QueryMethodTest" project="jwboot" tests="2" started="2" failures="0" errors="0" ignored="0">
-  <testsuite name="com.khit.study.repository.QueryMethodTest" time="0.665" displayname="QueryMethodTest" uniqueid="[engine:junit-jupiter]/[class:com.khit.study.repository.QueryMethodTest]">
-    <testcase name="testFindByTitle" classname="com.khit.study.repository.QueryMethodTest" time="0.654" displayname="testFindByTitle()" uniqueid="[engine:junit-jupiter]/[class:com.khit.study.repository.QueryMethodTest]/[method:testFindByTitle()]"/>
-    <testcase name="testFindByTitleContaining" classname="com.khit.study.repository.QueryMethodTest" time="0.01" displayname="testFindByTitleContaining()" uniqueid="[engine:junit-jupiter]/[class:com.khit.study.repository.QueryMethodTest]/[method:testFindByTitleContaining()]"/>
-  </testsuite>
-</testrun>
