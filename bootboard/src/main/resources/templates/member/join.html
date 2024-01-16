@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>회원가입...</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div id="container">
@@ -13,7 +14,11 @@
 		  	<ul>
 		  		<li>
 		  			<label for="memberEmail">이메일</label>
-		  			<input type="text" name="memberEmail" id="memberEmail">
+		  			<input type="text" name="memberEmail" id="memberEmail"
+		  			       onblur="checkEmail()">
+		  		</li>
+		  		<li>
+		  			<p id="check-result"></p>
 		  		</li>
 		  		<li>
 		  			<label for="memberPassword">비밀번호</label>
@@ -35,5 +40,33 @@
 		  </fieldset>
 		</form>
 	</div>
+	
+<script>
+	const checkEmail = () => {
+		//alert("test...");
+		let inputEmail = document.getElementById("memberEmail").value;
+		let checkResult = document.getElementById("check-result");
+		//console.log("입력된 이메일: ", inputEmail);
+		
+		$.ajax({
+			type: "POST",
+			url: "/member/check-email",
+			data: { memberEmail: inputEmail },  //파라미터: memberEmail
+			success: function(res){  //res - 결과 문자열이 반환됨
+				console.log("성공: ", res);
+				if(res == "OK"){
+					checkResult.innerHTML = "사용가능한 이메일입니다.";
+					checkResult.style.color = "green";
+				}else{ //res == "NO"
+					checkResult.innerHTML = "이미 가입된 이메일입니다.";
+					checkResult.style.color = "#b00";
+				}
+			},
+			error: function(err){
+				console.log("실패: ", err);
+			}
+		});
+	};
+</script>
 </body>
 </html>

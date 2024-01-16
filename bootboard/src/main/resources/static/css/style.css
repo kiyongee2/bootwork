@@ -14,11 +14,13 @@ a{text-decoration: none;}
 .joinform label{width: 100px; float: left;}
 .joinform input{padding: 4px;}
 
-/* memberlist 스타일 */
-.memberlist{width: 700px; margin: 0 auto;
+/* tbl_list 스타일 */
+.tbl_list{width: 700px; margin: 0 auto;
    border-collapse: collapse;}
-.memberlist th, td{border: 1px solid #ccc; padding: 8px;
+.tbl_list th, td{border: 1px solid #ccc; padding: 8px;
   text-align: center;}
+.tbl_list input[type="text"]{width: 680px; height: 25px}
+.tbl_list textarea{width: 680px; height: 300px}
 
 /* member detail 스타일 */  
 .detail{width: 420px; margin: 0 auto;}
