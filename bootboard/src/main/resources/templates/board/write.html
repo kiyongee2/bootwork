@@ -8,13 +8,19 @@
 <body>
     <div id="container">
         <h2>글쓰기</h2>
-        <form th:action="@{/board/write}" method="post" >
+        <form th:action="@{/board/write}" method="post" 
+              th:object="${boardDTO}" class="writeform">
+            <div th:if="${#fields.hasAnyErrors()}" >
+            	<div th:each="err: ${#fields.allErrors()}" 
+            			th:text="${err}" class="alert-danger"></div>
+            </div>
         	<table class="tbl_list">
         		<tbody>
+        		   <!-- th:field="*{boardTitle}" name 속성 역할도 하고
+        		        제목을 유지시키는 기능을 함 -->
         		  <tr>
         		  	<td>
-        		  		<input type="text" name="boardTitle"
-        		  			placeholder="글 제목">
+        		  		<input type="text" th:field="*{boardTitle}" placeholder="글 제목">
         		  	</td>
         		  </tr>
         		  <tr>
@@ -25,7 +31,7 @@
         		  </tr>
         		  <tr>
         		  	<td>
-        		  		<textarea rows="5" cols="50" name="boardContent"
+        		  		<textarea rows="5" cols="50" th:field="*{boardContent}"
         		  				placeholder="글 내용"></textarea>
         		  	</td>
         		  </tr>

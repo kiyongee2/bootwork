@@ -7,6 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
 import com.khit.study.entity.Board;
 
@@ -34,16 +37,16 @@ public class QueryMethodTest {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	public void testFindByTitle() {
 		//findByTitle() 호출
 		List<Board> boardList = 
-				boardRepository.findByTitle("테스트 제목 10");
+				boardRepository.findByTitle("테스트 제목 100");
 		
 		for(Board board : boardList) {
 			log.info(board.toString());
 		}
-	}
+	}*/
 	
 	/*@Test
 	public void testFindByTitleContaining() {
@@ -56,10 +59,34 @@ public class QueryMethodTest {
 		}
 	}*/
 	
-	@Test
+	/*@Test
 	public void testFindByTitleContainingOrContentContaining() {
 		List<Board> boardList =
 		boardRepository.findByTitleContainingOrContentContaining("10", "17");
+		
+		boardList.forEach(board -> log.info(board.toString()));
+	}*/
+	
+	/*@Test
+	public void testFindByTitleContainingOrderByIdDesc() {
+		List<Board> boardList =
+				boardRepository.findByTitleContainingOrderByIdDesc("10");
+		
+		for(Board board : boardList) {
+			log.info(board.toString());
+		}
+	}*/
+	
+	@Test
+	public void testFindByTitleContaining() {
+		//0 => 1페이지
+		//Pageable paging = PageRequest.of(0, 10);
+		Pageable paging = PageRequest.of(0, 10, Sort.by(Sort.Direction.DESC, "id"));
+		log.info("page: " + paging.getPageNumber()); //페이지 번호
+		log.info("size: " + paging.getPageSize()); //페이지당 글 개수
+		
+		List<Board> boardList =
+				boardRepository.findByTitleContaining("제목", paging);
 		
 		boardList.forEach(board -> log.info(board.toString()));
 	}

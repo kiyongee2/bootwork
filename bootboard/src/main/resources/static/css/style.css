@@ -29,4 +29,7 @@ a{text-decoration: none;}
 
 /* login 스타일 */
 .error{color: #f00; font-size: 0.9em}
+
+.writeform{width: 800px; margin: 0 auto;}
+.alert-danger{padding-left: 60px; color: #b00;}
   
