@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.khit.board.dto.BoardDTO;
@@ -29,7 +30,10 @@ public class BoardService {
 
 	public List<BoardDTO> findAll() {
 		//db에서 entity list를 가져옴
-		List<Board> boardList = boardRepository.findAll();
+		//List<Board> boardList = boardRepository.findAll();
+		//내림차순 정렬 - Sort.by(정렬방식, 해당필드)
+		List<Board> boardList = 
+				boardRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
 		//게시글을 담을 빈 리스트 생성
 		List<BoardDTO> boardDTOList = new ArrayList<>();
 		

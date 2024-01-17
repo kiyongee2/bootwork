@@ -30,15 +30,17 @@
        		  </tr>
        		  <tr>
        		  	<td>
-       		  		<input type="text" name="boardHits"
-       		  			th:value="'조회수: ' + ${board.boardHits}" readonly>
+       		  		<span th:text="'조회수: ' + ${board.boardHits}"></span>
        		  	</td>
        		  </tr>
        		  <tr>
        		  	<td>
-       		  		<input type="text" name="createdDate"
-       		  			th:value="'작성일: ' + ${#temporals.format(board.createdDate,
-		  	  				'yyyy-MM-dd HH:mm')}" readonly>
+       		  	    <span th:if="${board.updatedDate} != null" 
+       		  	    		th:text="'수정일: ' + ${#temporals.format(board.updatedDate,
+		  	  				'yyyy-MM-dd HH:mm')}"></span>
+       		  		<span th:unless="${board.updatedDate} != null"      
+       		  		        th:text="'작성일: ' + ${#temporals.format(board.createdDate,
+		  	  				'yyyy-MM-dd HH:mm')}"></span>
        		  	
        		  	</td>
        		  </tr>

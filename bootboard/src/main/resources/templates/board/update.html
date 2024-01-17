@@ -10,6 +10,7 @@
          <h2>글 수정하기</h2>
          <form th:action="@{/board/update}" method="post">
            <input type="hidden" name="id" th:value="${board.id}">
+           <input type="hidden" name="boardHits" th:value="${board.boardHits}">
            <table class="tbl_list">
        		<tbody>
        		  <tr>
@@ -32,15 +33,16 @@
        		  </tr>
        		  <tr>
        		  	<td>
-       		  		<input type="text" name="boardHits"
-       		  			th:value="${board.boardHits}" readonly>
-       		  	</td>
+       		  	    <span th:text="'조회수: ' + ${board.boardHits}"></span>
        		  </tr>
        		  <tr>
        		  	<td>
-       		  		<input type="text" name="createdDate"
-       		  			th:value="${board.createdDate}" readonly>
-       		  	
+       		  		<span th:if="${board.updatedDate} != null" 
+       		  	    		th:text="'수정일: ' + ${#temporals.format(board.updatedDate,
+		  	  				'yyyy-MM-dd HH:mm')}"></span>
+       		  		<span th:unless="${board.updatedDate} != null"      
+       		  		        th:text="'작성일: ' + ${#temporals.format(board.createdDate,
+		  	  				'yyyy-MM-dd HH:mm')}"></span>
        		  	</td>
        		  </tr>
        		  <tr>
