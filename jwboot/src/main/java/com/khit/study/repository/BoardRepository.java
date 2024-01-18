@@ -2,6 +2,7 @@ package com.khit.study.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -26,5 +27,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer>{
 	List<Board> findByTitleContainingOrderByIdDesc(String keyword);
 	
 	//제목에 특정 단어가 포함된 글 목록을 페이지 처리하여 조회
-	List<Board> findByTitleContaining(String keyword, Pageable pageable);
+	//List<Board> findByTitleContaining(String keyword, Pageable pageable);
+	
+	//페이지 처리
+	Page<Board> findByTitleContaining(String keyword, Pageable pageable);
+	
 }

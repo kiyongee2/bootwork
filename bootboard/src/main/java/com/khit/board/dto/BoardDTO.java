@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Builder
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor  //모든 필드를 매개변수로 갖는 생성자
 @Data
 public class BoardDTO {
 	private Long id;
@@ -49,5 +49,11 @@ public class BoardDTO {
 				.build();
 		return boardDTO;
 	}
+
+
+
+
+	
+
 	
 }

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -71,4 +74,22 @@ public class BoardService {
 		Board board = Board.toUpdateEntity(boardDTO);
 		boardRepository.save(board);
 	}
+
+	public Page<BoardDTO> findListAll(Pageable pageable) {
+		int page = pageable.getPageNumber() - 1; //db는 현재페이지보다 1 작아야함
+		int pageSize = 10;
+		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "id");
+		
+		Page<Board> boardList = boardRepository.findAll(pageable);
+		
+		//생성자 방식으로 boardDTOList 만들기
+		Page<BoardDTO> boardDTOList = 
+				boardList.map(board -> 
+				  new BoardDTO(board.getId(), board.getBoardTitle(), board.getBoardWriter(),
+				     board.getBoardContent(), board.getBoardHits(), board.getCreatedDate(),
+				     board.getUpdatedDate()));
+		
+		return boardDTOList;
+	}
+
 }
