@@ -17,7 +17,9 @@ import com.khit.board.repository.BoardRepository;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class BoardService {
@@ -81,6 +83,9 @@ public class BoardService {
 		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "id");
 		
 		Page<Board> boardList = boardRepository.findAll(pageable);
+		
+		log.info("boardList.isFirst()=" + boardList.isFirst());
+		log.info("boardList.isLast()=" + boardList.isLast());
 		
 		//생성자 방식으로 boardDTOList 만들기
 		Page<BoardDTO> boardDTOList = 

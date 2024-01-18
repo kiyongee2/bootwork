@@ -64,7 +64,18 @@ public class BoardController {
 			@PageableDefault(page = 1) Pageable pageable,
 			Model model) {
 		Page<BoardDTO> boardDTOList = boardService.findListAll(pageable);
+		
+		//하단의 페이지 블럭 만들기
+		int blockLimit = 10;  //하단에 보여줄 페이지 개수
+		//시작 페이지 1, 11, 21    12/10 = 1.2 -> 2.2 -> 2-1, 1*10+1 =11
+		int startPage = ((int)(Math.ceil((double)pageable.getPageNumber()/blockLimit))-1)*blockLimit+1;
+		//마지막 페이지 10, 20, 30 //12page -> 12 마지막
+		int endPage = (startPage+blockLimit-1) > boardDTOList.getTotalPages() ?
+				boardDTOList.getTotalPages() : startPage+blockLimit-1;
+		
 		model.addAttribute("boardList", boardDTOList);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		return "/board/pagelist";
 	}
 	

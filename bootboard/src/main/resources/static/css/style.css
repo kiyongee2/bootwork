@@ -21,7 +21,8 @@ a{text-decoration: none;}
   text-align: center;}
 .tbl_list input[type="text"]{width: 680px; height: 25px}
 .tbl_list textarea{width: 680px; height: 300px}
-.pagination{margin: 10px;}
+.pagination{margin: 10px; text-align: center;}
+.pagination a{padding: 4px;}
 .btn_write{text-align: left; padding-left: 250px;}
 
 /* member detail 스타일 */  

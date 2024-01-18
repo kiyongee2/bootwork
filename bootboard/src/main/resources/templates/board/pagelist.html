@@ -31,9 +31,21 @@
 		  </table>
 		  <!-- 페이지 영역 -->
 		  <div class="pagination">
-		  
+		    <!-- 이전 페이지 -->
+		    <!-- 2page 클릭하면 db 페이지는 1page -->
+		    <a th:href="${boardList.first}? '#' : 
+		    	@{/board/pagelist(page=${boardList.number})}">Prev</a>
+		    <!-- 페이지 번호 블럭 -->
+		    <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
+			    <!-- <span th:text="${page}"></span> -->
+			    <!-- /pagelist?page=1  -->
+			    <a th:href="@{/board/pagelist(page=${page})}" th:text="${page}"></a>
+			</span>
+			<!-- 다음 페이지 -->
+			<!-- 현재 2page -> 3page  실제페이지는 1page-->
+		    <a th:href="${boardList.last} ? '#' : 
+		    		@{/board/pagelist(page=${boardList.number+2})}">Next</a>
 		  </div>
-		  
 		  <!-- 글쓰기 버튼 -->
 		  <div class="btn_write">
 		  	<a th:href="@{/board/write}"><button type="button">글쓰기</button></a>
