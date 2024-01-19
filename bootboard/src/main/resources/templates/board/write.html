@@ -9,6 +9,7 @@
     <div id="container">
         <h2>글쓰기</h2>
         <form th:action="@{/board/write}" method="post" 
+              enctype="multipart/form-data"
               th:object="${boardDTO}" class="writeform">
             <div th:if="${#fields.hasAnyErrors()}" >
             	<div th:each="err: ${#fields.allErrors()}" 
@@ -33,6 +34,11 @@
         		  	<td>
         		  		<textarea rows="5" cols="50" th:field="*{boardContent}"
         		  				placeholder="글 내용"></textarea>
+        		  	</td>
+        		  </tr>
+        		  <tr>
+        		  	<td>
+        		  		<input type="file" name="boardFile">
         		  	</td>
         		  </tr>
         		  <tr>

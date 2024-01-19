@@ -31,6 +31,8 @@ public class BoardDTO {
 	private String boardContent;
 
 	private Integer boardHits;
+	private String filename;
+	private String filepath;
 	
 	private LocalDateTime createdDate;
 	private LocalDateTime updatedDate;
@@ -43,6 +45,8 @@ public class BoardDTO {
 				.boardTitle(board.getBoardTitle())
 				.boardWriter(board.getBoardWriter())
 				.boardContent(board.getBoardContent())
+				.filename(board.getFilename())
+				.filepath(board.getFilepath())
 				.boardHits(board.getBoardHits())
 				.createdDate(board.getCreatedDate())
 				.updatedDate(board.getUpdatedDate())

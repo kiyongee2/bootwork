@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.khit.board.dto.BoardDTO;
 import com.khit.board.service.BoardService;
@@ -39,13 +40,14 @@ public class BoardController {
 	//글쓰기 처리
 	@PostMapping("/write")
 	public String write(@Valid BoardDTO boardDTO, 
-			BindingResult bindingResult) {
+			BindingResult bindingResult,
+			MultipartFile boardFile) throws Exception {
 		if(bindingResult.hasErrors()) { //에러가 있으면 글쓰기 폼으로 이동
 			log.info("has errors.....");
 			return "/board/write";
 		}
 		//글쓰기 처리
-		boardService.save(boardDTO);
+		boardService.save(boardDTO, boardFile);
 		return "redirect:/board/pagelist";
 	}
 	
