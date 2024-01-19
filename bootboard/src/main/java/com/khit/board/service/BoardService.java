@@ -86,6 +86,7 @@ public class BoardService {
 		
 		log.info("boardList.isFirst()=" + boardList.isFirst());
 		log.info("boardList.isLast()=" + boardList.isLast());
+		log.info("boardList.getNumber()=" + boardList.getNumber());
 		
 		//생성자 방식으로 boardDTOList 만들기
 		Page<BoardDTO> boardDTOList = 
@@ -94,6 +95,38 @@ public class BoardService {
 				     board.getBoardContent(), board.getBoardHits(), board.getCreatedDate(),
 				     board.getUpdatedDate()));
 		
+		return boardDTOList;
+	}
+
+	public Page<BoardDTO> findByBoardTitleContaining(String keyword, Pageable pageable) {
+		int page = pageable.getPageNumber() - 1; //db는 현재페이지보다 1 작아야함
+		int pageSize = 10;
+		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "id");
+		
+		Page<Board> boardList = boardRepository.findByBoardTitleContaining(keyword, pageable);
+
+		//생성자 방식으로 boardDTOList 만들기
+		Page<BoardDTO> boardDTOList = 
+				boardList.map(board -> 
+				  new BoardDTO(board.getId(), board.getBoardTitle(), board.getBoardWriter(),
+				     board.getBoardContent(), board.getBoardHits(), board.getCreatedDate(),
+				     board.getUpdatedDate()));
+		return boardDTOList;
+	}
+
+	public Page<BoardDTO> findByBoardContentContaining(String keyword, Pageable pageable) {
+		int page = pageable.getPageNumber() - 1; //db는 현재페이지보다 1 작아야함
+		int pageSize = 10;
+		pageable = PageRequest.of(page, pageSize, Sort.Direction.DESC, "id");
+		
+		Page<Board> boardList = boardRepository.findByBoardContentContaining(keyword, pageable);
+
+		//생성자 방식으로 boardDTOList 만들기
+		Page<BoardDTO> boardDTOList = 
+				boardList.map(board -> 
+				  new BoardDTO(board.getId(), board.getBoardTitle(), board.getBoardWriter(),
+				     board.getBoardContent(), board.getBoardHits(), board.getCreatedDate(),
+				     board.getUpdatedDate()));
 		return boardDTOList;
 	}
 

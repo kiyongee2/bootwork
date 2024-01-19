@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.khit.board.dto.BoardDTO;
 import com.khit.board.service.BoardService;
@@ -45,7 +46,7 @@ public class BoardController {
 		}
 		//글쓰기 처리
 		boardService.save(boardDTO);
-		return "redirect:/board/list";
+		return "redirect:/board/pagelist";
 	}
 	
 	//글목록
@@ -61,9 +62,19 @@ public class BoardController {
     //  /board/pagelist
 	@GetMapping("/pagelist")
 	public String getPageList(
+			@RequestParam(value="type", required = false) String type,
+			@RequestParam(value="keyword", required = false) String keyword,
 			@PageableDefault(page = 1) Pageable pageable,
 			Model model) {
-		Page<BoardDTO> boardDTOList = boardService.findListAll(pageable);
+		//검색어가 없으면 페이지 처리를 하고, 검색어가 있으면 검색어로 페이지 처리
+		Page<BoardDTO> boardDTOList = null;
+		if(keyword == null) {
+			boardDTOList = boardService.findListAll(pageable);
+		}else if(type != null && type.equals("title")) {
+			boardDTOList = boardService.findByBoardTitleContaining(keyword, pageable);
+		}else if(type != null && type.equals("content")){
+			boardDTOList = boardService.findByBoardContentContaining(keyword, pageable);
+		}
 		
 		//하단의 페이지 블럭 만들기
 		int blockLimit = 10;  //하단에 보여줄 페이지 개수
@@ -74,6 +85,8 @@ public class BoardController {
 				boardDTOList.getTotalPages() : startPage+blockLimit-1;
 		
 		model.addAttribute("boardList", boardDTOList);
+		model.addAttribute("type", type);    //검색 유형 보내기
+		model.addAttribute("kw", keyword);   //검색어 보내기
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		return "/board/pagelist";
@@ -81,12 +94,16 @@ public class BoardController {
 	
 	//글 상세보기
 	@GetMapping("/{id}")
-	public String getBoard(@PathVariable Long id, Model model) {
+	public String getBoard(
+			@PageableDefault(page = 1) Pageable pageable,
+			@PathVariable Long id,
+			Model model) {
 		//조회수
 		boardService.updateHits(id);
 		//글 상세보기
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute("board", boardDTO);
+		model.addAttribute("page", pageable.getPageNumber());
 		return "/board/detail";
 	}
 	

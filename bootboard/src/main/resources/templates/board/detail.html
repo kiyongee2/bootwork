@@ -55,7 +55,8 @@
        		  			   <input type="button" value="삭제">
        		  			</a>
        		  	    </span>
-       		  		 <a th:href="@{/board/list}">
+       		  	    <!-- Pageable 클래스의 page -> getPageNumber() -->
+       		  		 <a th:href="@{/board/pagelist(page=${page})}">
        		  			<input type="button" value="목록">
        		  		</a>
        		  	</td>

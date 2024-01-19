@@ -7,7 +7,18 @@
 </head>
 <body>
 	<div id="container">
-		<h2>글 목록</h2>
+	    <h2>글 목록</h2>
+	    <!-- 검색 영역  -->
+	    <form th:action="@{/board/pagelist}" method="get" 
+	    			class="searchform">
+	      <select name="type" class="sel_type">
+	      	<option th:value="title" th:text="제목" th:selected="${type=='title'}" ></option>
+	      	<option th:value="content" th:text="내용" th:selected="${type=='content'}"></option>
+	      </select>			
+		  <input type="text" name="keyword" th:value="${kw}">
+		  <input type="submit" value="검색">
+		</form>
+	    <!-- 글 목록 -->
 		  <table class="tbl_list">
 		  	<thead>
 		  	  <tr>
@@ -21,7 +32,8 @@
 		  	<tbody>
 		  	  <tr th:each="board : ${boardList}">
 		  	  	<td th:text="${board.id}"></td>
-		  	  	<td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>
+		  	  	<!-- Page 클래스의 메서드인 number - getNumber() -->
+		  	  	<td><a th:href="@{|/board/${board.id}|(page=${boardList.number+1})}" th:text="${board.boardTitle}"></a></td>
 		  	  	<td th:text="${board.boardWriter}"></td>
 		  	  	<td th:text="${board.boardHits}"></td>
 		  	  	<td th:text="${#temporals.format(board.createdDate,
@@ -37,9 +49,12 @@
 		    	@{/board/pagelist(page=${boardList.number})}">Prev</a>
 		    <!-- 페이지 번호 블럭 -->
 		    <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
-			    <!-- <span th:text="${page}"></span> -->
-			    <!-- /pagelist?page=1  -->
-			    <a th:href="@{/board/pagelist(page=${page})}" th:text="${page}"></a>
+			    <!-- 현재 페이지는 링크없이 숫자만 표시 -->
+			    <span th:if="${page == boardList.number + 1}"  
+			    	th:text="${page}" class="current_page"></span>
+			    <span th:if="${page != boardList.number + 1}">
+			    	<a th:href="@{/board/pagelist(page=${page})}" th:text="${page}"></a>
+			    </span>
 			</span>
 			<!-- 다음 페이지 -->
 			<!-- 현재 2page -> 3page  실제페이지는 1page-->

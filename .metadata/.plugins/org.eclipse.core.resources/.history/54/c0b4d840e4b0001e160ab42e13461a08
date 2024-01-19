@@ -1,8 +1,0 @@
-# port 설정
-server.port=8000
-
-# static 설정
-spring.mvc.static-path-pattern=/static/**
-
-
-
