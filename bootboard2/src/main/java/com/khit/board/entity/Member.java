@@ -3,6 +3,7 @@ package com.khit.board.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -15,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+@ToString(exclude="boardList")  //순환참조 방지
 @Setter
 @Getter
 @Table(name = "t_member")
@@ -39,6 +40,8 @@ public class Member {
 	
 	//Board와 관계 매핑
 	//주인 설정(다쪽이-board 주인)
-	@OneToMany(mappedBy="member", fetch = FetchType.EAGER)
+	//cascade : 참조된 객체가 삭제되면 참조하는 객체도 삭제됨
+	@OneToMany(mappedBy="member", fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<>();
 }

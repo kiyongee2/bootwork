@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>글쓰기...</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div id="container">
+        <h2>글쓰기</h2>
+        <form th:action="@{/board/write}" method="post" 
+              enctype="multipart/form-data"
+              th:object="${boardDTO}" class="writeform">
+            <div th:if="${#fields.hasAnyErrors()}" >
+            	<div th:each="err: ${#fields.allErrors()}" 
+            			th:text="${err}" class="alert-danger"></div>
+            </div>
+        	<table class="tbl_list">
+        		<tbody>
+        		   <!-- th:field="*{boardTitle}" name 속성 역할도 하고
+        		        제목을 유지시키는 기능을 함 -->
+        		  <tr>
+        		  	<td>
+        		  		<input type="text" th:field="*{boardTitle}" placeholder="글 제목">
+        		  	</td>
+        		  </tr>
+        		  <tr>
+        		  	<td>
+        		  		<input type="text" name="boardWriter"
+        		  			th:value="${session.sessionName}">
+        		  	</td>
+        		  </tr>
+        		  <tr>
+        		  	<td>
+        		  		<textarea rows="5" cols="50" th:field="*{boardContent}"
+        		  				placeholder="글 내용"></textarea>
+        		  	</td>
+        		  </tr>
+        		  <tr>
+        		  	<td>
+        		  		<input type="file" name="boardFile">
+        		  	</td>
+        		  </tr>
+        		  <tr>
+        		  	<td>
+        		  		<input type="submit" value="등록">
+        		  		<input type="reset" value="취소">
+        		  	</td>
+        		  </tr>
+        		</tbody>
+        	</table>
+        
+        </form>
+	</div>
+</body>
+</html>

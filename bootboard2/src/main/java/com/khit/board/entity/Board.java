@@ -17,7 +17,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@ToString
+@ToString(exclude="member")
 @Setter
 @Getter
 @Table(name = "t_board")
