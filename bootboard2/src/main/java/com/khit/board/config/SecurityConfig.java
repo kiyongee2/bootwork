@@ -19,11 +19,12 @@ public class SecurityConfig {
 	//@Bean는 프로젝트에서 관리가 안되는 클래스를 빈으로 사용할때 필요함
 	@Bean
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		//인증 및 권한 서비스 실행
+		http.userDetailsService(customService);
+		
 		//인증 설정 -> 권한 설정
 		// 로그인이 필요없음: /", "/css/**", "/images/**", "/auth/main", "/member/**"
 		// 로그인이 필요: 그외의 경로
-		http.userDetailsService(customService);
-		
 		http
 		  .authorizeHttpRequests(authorize -> authorize
 				  .requestMatchers("/", "/css/**", "/images/**", 

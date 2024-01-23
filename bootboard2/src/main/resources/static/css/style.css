@@ -8,6 +8,7 @@ a{text-decoration: none;}
 /* index 스타일 */
 .main-img{text-align: center;}
 .menu{text-align: center;}
+.auth{text-align: center;}
 
 /* join 스타일 */
 .joinform{width: 420px; margin: 0 auto;}
