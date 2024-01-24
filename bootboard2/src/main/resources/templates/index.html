@@ -6,18 +6,17 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <!-- footer.html 연결  -->
+	<div th:replace="~{/layout/header::header-fragment}"></div>
 	<div id="container">
-		<h2>MyHome에 오셨습니다...</h2>
-		<div class="main-img">
+	   <section id="main">
+		<h1>MyHome에 오셨습니다...</h1>
+		<div class="main_img">
 	    	<img th:src="@{/images/1.jpg}" alt="theater">
 	    </div>
-	    <div class="menu">
-	    	<a th:href="@{/main}">메인페이지</a>&nbsp; &nbsp;
-	    	<a th:href="@{/member/join}">회원가입</a>&nbsp; &nbsp;
-	    	<a th:href="@{/member/list}">회원목록</a>&nbsp; &nbsp;
-	    	<a th:href="@{/board/list}">글목록</a>&nbsp; &nbsp;
-	    	<a th:href="@{/auth/main}">인증메인</a>&nbsp; &nbsp;
-	    </div>
+	  </section>
 	</div>
+	<!-- footer.html 연결  -->
+	<div th:replace="~{/layout/footer::footer-fragment}"></div>
 </body>
 </html>

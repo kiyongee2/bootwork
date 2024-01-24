@@ -68,9 +68,10 @@ public class MemberService {
 	}
 
 	public void update(Member member) {
+		//암호화, 권한 설정
 		String encPW = pwEncoder.encode(member.getPassword());
 		member.setPassword(encPW);
-		member.setRole(Role.MEMBER);
+		member.setRole(Role.ADMIN);
 		memberRepository.save(member);
 	}
 }

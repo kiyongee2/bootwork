@@ -92,6 +92,7 @@ public class MemberController {
 	}
 	
 	//회원 수정 페이지
+	//@AuthenticationPrincipal - 회원을 인가하는 클래스
 	@GetMapping("/member/update")
 	public String updateMember(
 			@AuthenticationPrincipal SecurityUser principal,
@@ -101,7 +102,7 @@ public class MemberController {
 		return "/member/update";
 	}
 	
-	//회원 수정 처리
+	//회원 수정 처리 - 상세보기로 이동
 	@PostMapping("/member/update")
 	public String update(@ModelAttribute Member member) {
 		memberService.update(member);

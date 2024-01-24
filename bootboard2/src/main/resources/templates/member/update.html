@@ -6,9 +6,10 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <div th:replace="~{/layout/header::header-fragment}"></div>
 	<div id="container">
+	  <section id="update">
 		<h2>회원 수정</h2>
-		<div class="detail">
 		<form th:action="@{/member/update}" method="post">
 		<input type="hidden" name="id" th:value="${member.id}">
 		   <fieldset>
@@ -35,7 +36,8 @@
 		  	 </ul>
 	  	    </fieldset>
 	  	  </form>
-	  	</div>
+	  	</section>
 	</div>
+	<div th:replace="~{/layout/footer::footer-fragment}"></div>
 </body>
 </html>

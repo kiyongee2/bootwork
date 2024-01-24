@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
 <title>Index...</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+    <div th:replace="~{/layout/header::header-fragment}"></div>
     <div id="container">
+       <section id="board_detail">
          <h2>글 상세보기</h2>
          <table class="tbl_list">
        		<tbody>
@@ -30,13 +33,25 @@
        		  </tr>
        		  <tr>
        		  	<td>
-     		  		 <a th:href="@{/board/list}">
-     		  			<input type="button" value="목록">
+       		  	   <th:block sec:authorize="isAuthenticated()"
+       		  	         th:if="${#authentication.getPrincipal.getUsername()}==
+       		  	                 ${board.member.memberId}">
+   		  	    	<a th:href="@{/board/update/${board.id}}">
+   		  			  <button type="button">수정</button>
+     		  		</a>
+     		  		<a th:href="@{/board/delete/${board.id}}">
+     		  			<button type="button">삭제</button>
+     		  		</a>
+     		  		</th:block>
+     		  		<a th:href="@{/board/list}">
+     		  			<button type="button">목록</button>
      		  		</a>
        		  	</td>
        		  </tr>
        		</tbody>
        	</table>
+       </section>
 	</div>
+	<div th:replace="~{/layout/footer::footer-fragment}"></div>
 </body>
 </html>

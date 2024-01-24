@@ -1,44 +1,114 @@
 @charset "UTF-8";
 
-#container{width: 1200px; margin:30px auto;}
-h2{color: #b00; text-align: center}
-ul li{list-style: none; margin: 16px;}
+/* 공통 스타일 */
+*{margin: 0; padding: 0;}
+#container{width: 1200px; margin: 30px auto 100px;}
+ul li{list-style: none;}
 a{text-decoration: none;}
 
+/* header 스타일 */
+header{height: 80px; background: #d05efd;}
+header #logo{width: 250px; float: left; line-height: 80px;}
+#logo h1 a{color: greenyellow; padding-left: 24px; font-style: italic;}
+#logo h1 a:hover{color: #eee;}
+header nav{width: 900px; float: right;}
+#topMenu{line-height: 80px; padding-left: 150px;}
+#topMenu li{float: left; margin: 0 20px;}
+#topMenu li a{color: #eee; padding: 0 20px;}
+#topMenu li a:hover{color: #444;}
+
 /* index 스타일 */
-.main-img{text-align: center;}
-.menu{text-align: center;}
-.auth{text-align: center;}
+#main{width: 1000px; margin: 40px auto;}
+#main h1{color: blue; font-style: italic; 
+	padding: 20px 60px; text-align: center}
+#main .main_img{text-align: center}
+#main .main_img img{border-radius: 5px;}
+
+/* footer 스타일 */
+footer{height: 80px; border-top: 2px solid #222; clear: both;}
+#bottomMenu{margin: 10px 20px;}
+#bottomMenu li{float: left; margin: 10px 0; padding: 0 10px;
+	border-right: 1.5px solid #ccc;}
+#bottomMenu li a{color: #444;}
+#bottomMenu li:last-child{border: none;}
+
+/* login 스타일 */
+#login {width: 400px; margin: 30px auto 100px;}
+#login form{margin: 30px auto;}
+#login form ul li{margin: 30px;}
+#login .error{color: #e00; margin-top: 16px; font-size: 0.9em}
+#login .button{width: 100%; padding: 10px 0;}
 
 /* join 스타일 */
-.joinform{width: 420px; margin: 0 auto;}
-.joinform label{width: 100px; float: left;}
-.joinform input{padding: 4px;}
+#join{width: 460px; margin: 20px auto;}
+#join form{margin: 20px auto;}
+form ul li{margin: 20px;}
+#join .button{width: 100%; padding: 10px 0;}
+form label{width: 120px; float: left; padding-left: 20px;}
+form input{padding: 5px;}
 
-/* tbl_list 스타일 */
-.searchform{width: 700px; margin: 0 auto; text-align: right;
-  margin-bottom: 12px;}
-.sel_type{padding: 4px;}
-.tbl_list{width: 700px; margin: 0 auto;
-   border-collapse: collapse;}
-.tbl_list th, td{border: 1px solid #ccc; padding: 8px;
-  text-align: center;}
-.tbl_list input[type="text"]{width: 680px; height: 25px}
-.tbl_list textarea{width: 680px; height: 300px}
-.pagination{margin: 10px; text-align: center;}
-.pagination a{padding: 4px; text-decoration: underline;
-  color: #555;}
-.pagination span.current_page{color: #b00;}
-.btn_write{text-align: left; padding-left: 250px;}
+/* 회원 목록 스타일 */
+#memberlist{width: 700px; margin: 20px auto;}
+#memberlist .logout{text-align: right;}
+#memberlist table{width: 700px; margin: 20px auto;}
+#memberlist table, th, td{border: 1px solid #ccc; 
+  border-collapse: collapse; padding: 10px;}
+table thead{background: #eee;}
+table tbody td{text-align: center;}
 
-/* member detail 스타일 */  
-.detail{width: 420px; margin: 0 auto;}
-.detail label{width: 100px; float: left;}
-.detail input{padding: 4px;}
+/* 회원 상세보기 스타일 */
+#update{width: 460px; margin: 20px auto;}
+#update form{margin: 20px auto;}
+form ul li{margin: 20px;}
+#update .button{width: 100%; padding: 10px 0;}
+form label{width: 120px; float: left; padding-left: 20px;}
+form input{padding: 5px;}
+
+/* 회원 수정 스타일 */
+#detail{width: 460px; margin: 20px auto;}
+#detail form{margin: 20px auto;}
+form ul li{margin: 20px;}
+#detail .button{width: 100%; padding: 10px 0;}
+form label{width: 120px; float: left; padding-left: 20px;}
+form input{padding: 5px;}
+
+/* 게시글 목록 스타일 */
+#boardlist{width: 700px; margin: 20px auto;}
+#boardlist table{width: 700px; margin: 20px auto; }
+#boardlist table, th, td{border: 1px solid #ccc; 
+  border-collapse: collapse;  padding: 8px;}
+#boardlist table thead{background: #eee;}
+#boardlist table tbody td{text-align: center;}
+#boardlist table tbody td:nth-child(2){text-align: left;}
+#boardlist table input{width: 200px; height: 25px; padding: 3px;}
+#boardlist button{padding: 10px;}
+#boardlist .pagination{text-align: center;}
+.pagination a{margin: 5px; color: black;}
+.pagination .current_page{font-weight: bold; color: #00f;}
+
+/* 글쓰기 스타일*/
+#writeform{width: 550px; margin: 20px auto;}
+#writeform table{width: 550px; margin: 20px auto;}
+#writeform table, th, td{border: 1px solid #ccc; 
+  border-collapse: collapse; text-align: center;}
+#writeform table th, td{padding: 10px;}
+#writeform table thead{background: #eee;}
+#writeform input{width: 540px; height: 25px; padding: 5px;}
+#writeform textarea{width: 540px; height: 300px; padding: 5px;}
+#writeform button{width: 80px; padding: 5px;}
+
+/* 글 상세보기 스타일 */
+#board_detail{width: 550px; margin: 20px auto;}
+#board_detail table{width: 550px; margin: 20px auto;}
+#board_detail table, th, td{border: 1px solid #ccc; 
+  border-collapse: collapse; padding: 10px;}
+#board_detail table tbody td{text-align: left;}
+#board_detail table tr:last-child td{text-align: center;}
+#board_detail input{width: 540px; height: 25px; padding: 5px;}
+#board_detail textarea{width: 540px; height: 260px; padding: 5px;}
+#board_detail button{padding: 5px;}
 
 /* login 스타일 */
 .error{color: #f00; font-size: 0.9em}
 
-.writeform{width: 800px; margin: 0 auto;}
-.alert-danger{padding-left: 60px; color: #b00;}
   
