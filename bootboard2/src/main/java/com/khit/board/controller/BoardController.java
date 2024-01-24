@@ -56,4 +56,35 @@ public class BoardController {
 		boardService.save(board);
 		return "redirect:/board/list";
 	}
+	
+	//게시글 삭제
+	@GetMapping("/delete/{id}")
+	public String deleteBoard(@PathVariable Integer id) {
+		boardService.deleteById(id);
+		return "redirect:/board/list";
+	}
+	
+	//게시글 수정 페이지 요청
+	@GetMapping("/update/{id}")
+	public String updateBoard(@PathVariable Integer id,
+			Model model) {
+		//해당 아이디의 수정할 게시글 가져오기
+		Board board = boardService.findById(id);
+		model.addAttribute("board", board);
+		return "/board/update";
+	}
+	
+	//게시글 수정 처리
+	@PostMapping("/update")
+	public String update(@ModelAttribute Board board,
+			@AuthenticationPrincipal SecurityUser principal) {
+		board.setMember(principal.getMember());
+		boardService.update(board);
+		return "redirect:/board/update/" + board.getId();
+	}
 }
+
+
+
+
+

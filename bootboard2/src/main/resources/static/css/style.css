@@ -91,7 +91,7 @@ form input{padding: 5px;}
 #writeform table{width: 550px; margin: 20px auto;}
 #writeform table, th, td{border: 1px solid #ccc; 
   border-collapse: collapse; text-align: center;}
-#writeform table th, td{padding: 10px;}
+#writeform table th, td{padding: 10px; text-align: left;}
 #writeform table thead{background: #eee;}
 #writeform input{width: 540px; height: 25px; padding: 5px;}
 #writeform textarea{width: 540px; height: 300px; padding: 5px;}

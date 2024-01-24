@@ -21,7 +21,7 @@
         		  </tr>
         		  <tr>
         		  	<td>
-        		  	   <div sec:authorize="isAuthenticated()">
+        		  	   <div sec:authorize="isAuthenticated()" class="auth">
 		                 <span sec:authentication="principal.member.name"></span>
 		               </div>
         		  	</td>

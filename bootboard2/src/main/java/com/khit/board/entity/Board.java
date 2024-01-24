@@ -22,7 +22,7 @@ import lombok.ToString;
 @Getter
 @Table(name = "t_board")
 @Entity
-public class Board {
+public class Board extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -40,8 +40,8 @@ public class Board {
 	//다대일 매핑
 	//fetch는 조회할때 EAGER-전체 조회를 함, LAZY-특정한 조회만 됨)
 	//JoinColumn - 외래키 설정
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "member_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn
 	private Member member;
 	
 	
