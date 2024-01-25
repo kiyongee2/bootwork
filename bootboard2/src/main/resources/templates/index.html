@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Index...</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- footer.html 연결  -->
@@ -14,9 +15,17 @@
 		<div class="main_img">
 	    	<img th:src="@{/images/1.jpg}" alt="theater">
 	    </div>
+	    
+	    <div class="weather">
+		    <h2>오늘의 날씨</h2>
+			  <h3 class="result">
+			      <!-- 20240125(날짜), 0600(발표시각), -9.1(온도) -->
+			  </h3>
+		    </div>
 	  </section>
 	</div>
 	<!-- footer.html 연결  -->
 	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+<script src="/js/weather.js"></script>
 </body>
 </html>

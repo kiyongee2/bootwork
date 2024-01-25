@@ -23,6 +23,8 @@ header nav{width: 900px; float: right;}
 	padding: 20px 60px; text-align: center}
 #main .main_img{text-align: center}
 #main .main_img img{border-radius: 5px;}
+#main .weather{text-align: center;}
+#main .weather .result{margin: 16px;}
 
 /* footer 스타일 */
 footer{height: 80px; border-top: 2px solid #222; clear: both;}
