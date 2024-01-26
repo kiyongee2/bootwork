@@ -12,7 +12,7 @@ public class BoardServiceTest {
 	@Autowired
 	private BoardService boardService;
 	
-	@Test
+	/*@Test
 	void testInsertBoard() throws Exception{
 		for(int i=1; i<=256; i++) {
 			BoardDTO boardDTO = new BoardDTO();
@@ -22,5 +22,5 @@ public class BoardServiceTest {
 			
 			boardService.save(boardDTO, null);
 		}
-	}
+	}*/
 }

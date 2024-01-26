@@ -3,8 +3,11 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
+<meta name="_csrf_header" th:content="${_csrf.headerName}">
+<meta name="_csrf" th:content="${_csrf.token}">
 <title>Index...</title>
 <link rel="stylesheet" th:href="@{/css/style.css}">
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div th:replace="~{/layout/header::header-fragment}"></div>
@@ -51,8 +54,40 @@
        		  </tr>
        		</tbody>
        	</table>
+       	
+       	<!-- 댓글 목록  -->
+       	<div class="reply">
+       		<div th:each="reply : ${board.replyList}">
+       		  <p th:text="${reply.content}"></p>
+       		  <p th:text=" '작성자: ' + ${reply.member.name} + 
+       		      ' (작성일: ' + ${reply.createdDate} + ')' "></p>
+       		  <p>
+       		    <th:block sec:authorize="isAuthenticated()"
+       		  	         th:if="${#authentication.getPrincipal.getUsername()}==
+       		  	                 ${reply.member.memberId}">
+	       		  	<a th:href="'#'">수정</a> | 
+	       		  	<!-- 자바스크립트에서 자료형값을 유지- [[자료]] -->
+	       		  	<a th:href="'#'" 
+	       		  	   th:onclick="replyObject.deleteReply([[${board.id}]], [[${reply.id}]])">삭제</a>
+       		    </th:block>
+       		  </p>
+       		</div>
+       	</div>
+       	
+       	<!-- 댓글 등록 -->
+       	<div class="reply-insert">
+       	    <input type="hidden" id="boardId" th:value="${board.id}">
+       		<p>
+       			<textarea rows="3" cols="80"
+       				id="replyContent" placeholder="댓글을 남겨주세요"></textarea>
+       		</p>
+       		<button id="btn-save-reply">댓글 등록</button>
+       	</div>
+       	
        </section>
 	</div>
 	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+
+<script src="/js/reply.js"></script>
 </body>
 </html>

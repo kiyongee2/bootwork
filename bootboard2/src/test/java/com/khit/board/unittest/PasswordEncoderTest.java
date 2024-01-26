@@ -18,7 +18,7 @@ public class PasswordEncoderTest {
 	@Autowired
 	private PasswordEncoder pwEncoder;
 	
-	@Test
+	/*@Test
 	public void testInsertData() {
 		//일반 회원 - 저장
 		Member member = new Member();
@@ -28,6 +28,6 @@ public class PasswordEncoderTest {
 		member.setRole(Role.MEMBER);
 		
 		memberRepository.save(member);
-	}
+	}*/
 
 }

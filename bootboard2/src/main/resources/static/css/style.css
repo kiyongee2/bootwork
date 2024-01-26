@@ -109,6 +109,11 @@ form input{padding: 5px;}
 #board_detail input{width: 540px; height: 25px; padding: 5px;}
 #board_detail textarea{width: 540px; height: 260px; padding: 5px;}
 #board_detail button{padding: 5px;}
+#board_detail .reply-insert textarea{width: 540px; height: 60px; padding: 5px;
+    margin: 10px 0;}
+#board_detail .reply p:nth-child(1){border-top: 1px dotted #ccc;}
+#board_detail .reply p:nth-child(2){border-bottom: 1px dotted #ccc;}
+#board_detail .reply p{padding: 5px;}
 
 /* login 스타일 */
 .error{color: #f00; font-size: 0.9em}
