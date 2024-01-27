@@ -92,8 +92,8 @@ public class MemberService {
 		memberDTO.setPassword(encPW);
 		memberDTO.setRole(Role.MEMBER);
 		
-		//변환
-		Member member = Member.toSaveEntity(memberDTO);
+		//변환시 엔티티 메서드를 toSaveUpdate()로 바꿔줌
+		Member member = Member.toSaveUpdate(memberDTO);
 		
 		memberRepository.save(member);
 	}

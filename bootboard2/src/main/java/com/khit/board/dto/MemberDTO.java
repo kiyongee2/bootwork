@@ -1,5 +1,7 @@
 package com.khit.board.dto;
 
+import java.sql.Timestamp;
+
 import com.khit.board.entity.Member;
 import com.khit.board.entity.Role;
 
@@ -27,6 +29,10 @@ public class MemberDTO {
 	
 	private Role role;
 	
+	private Timestamp createdDate;
+	
+	private Timestamp updatedDate;
+	
 	//entity(model<db>에 저장됨) -> dto(view로 보기)로 변환
 	//목록보기, 상세보기
 	public static MemberDTO toSaveDTO(Member member) {
@@ -36,6 +42,8 @@ public class MemberDTO {
 				.password(member.getPassword())
 				.name(member.getName())
 				.role(member.getRole())
+				.createdDate(member.getCreatedDate())
+				.updatedDate(member.getUpdatedDate())
 				.build();
 		
 		return memberDTO;
