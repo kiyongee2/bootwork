@@ -3,6 +3,8 @@ package com.khit.board.dto;
 import com.khit.board.entity.Member;
 import com.khit.board.entity.Role;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,10 +14,15 @@ public class MemberDTO {
 	
 	private Integer id;
 	
+	//아이디는 4자~20자로 입력
+	@Size(min=4, max=20)
+	@NotEmpty(message = "사용자 ID는 필수 항목입니다.")
 	private String memberId;
 	
+	@NotEmpty(message = "비밀번호는 필수 항목입니다.")
 	private String password;
 	
+	@NotEmpty(message = "이름은 필수 항목입니다.")
 	private String name;
 	
 	private Role role;

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import com.khit.board.dto.MemberDTO;
 import com.khit.board.entity.Member;
 import com.khit.board.service.MemberService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -57,13 +59,21 @@ public class MemberController {
 	
 	//회원 가입 페이지
 	@GetMapping("/member/join")
-	public String joinForm() {
+	public String joinForm(MemberDTO memberDTO) {
 		return "/member/join";
 	}
 	
 	//회원 가입 처리
+	//@Valid : 필드의 유효성 검사
+	//BindingResult: 에러 처리 클래스
 	@PostMapping("/member/join")
-	public String join(@ModelAttribute MemberDTO memberDTO) {
+	public String join(@Valid MemberDTO memberDTO,
+			BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			//에러가 있으면 회원 가입 페이지에 머무름
+			return "/member/join";
+		}
+		
 		memberService.save(memberDTO);
 		return "redirect:/member/login";
 	}

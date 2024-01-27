@@ -44,10 +44,12 @@ footer{height: 80px; border-top: 2px solid #222; clear: both;}
 /* join 스타일 */
 #join{width: 460px; margin: 20px auto;}
 #join form{margin: 20px auto;}
-form ul li{margin: 20px;}
+#joinform ul li{margin: 20px;}
 #join .button{width: 100%; padding: 10px 0;}
-form label{width: 120px; float: left; padding-left: 20px;}
-form input{padding: 5px;}
+#join form label{width: 120px; float: left; padding-left: 20px;}
+#join form input{padding: 5px;}
+#join form li p{padding-left: 20px;}
+#join .error{color: #b00;}
 
 /* 회원 목록 스타일 */
 #memberlist{width: 700px; margin: 20px auto;}
