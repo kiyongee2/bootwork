@@ -29,7 +29,6 @@
     <fullyQualifiedTypeName name="java.util.function.Supplier"/>
     <fullyQualifiedTypeName name="com.khit.board.exception.CustomException"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
     <fullyQualifiedTypeName name="com.khit.board.entity.BaseEntity"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
@@ -50,14 +49,15 @@
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="com.khit.board.repository.ReplyRepository"/>
     <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
-    <fullyQualifiedTypeName name="com.khit.board.service.ReplyService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="com.khit.board.entity.Reply"/>
     <fullyQualifiedTypeName name="org.springframework.security.core.annotation.AuthenticationPrincipal"/>
     <fullyQualifiedTypeName name="com.khit.board.config.SecurityUser"/>
     <fullyQualifiedTypeName name="com.khit.board.repository.BoardRepository"/>
     <fullyQualifiedTypeName name="com.khit.board.entity.Board"/>
+    <fullyQualifiedTypeName name="com.khit.board.service.ReplyService"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseBody"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
 </qualifiedTypeNameHistroy>

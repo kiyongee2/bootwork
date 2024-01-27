@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.khit.board.config.SecurityUser;
+import com.khit.board.dto.MemberDTO;
 import com.khit.board.entity.Member;
 import com.khit.board.service.MemberService;
 
@@ -62,16 +63,16 @@ public class MemberController {
 	
 	//회원 가입 처리
 	@PostMapping("/member/join")
-	public String join(@ModelAttribute Member member) {
-		memberService.save(member);
+	public String join(@ModelAttribute MemberDTO memberDTO) {
+		memberService.save(memberDTO);
 		return "redirect:/member/login";
 	}
 	
 	//회원 목록
 	@GetMapping("/member/list")
 	public String getList(Model model) {
-		List<Member> memberList = memberService.findAll();
-		model.addAttribute("memberList", memberList);
+		List<MemberDTO> memberDTOList = memberService.findAll();
+		model.addAttribute("memberList", memberDTOList);
 		return "/member/list";
 	}
 	
@@ -79,8 +80,8 @@ public class MemberController {
 	@GetMapping("/member/{id}")
 	public String getMember(@PathVariable Integer id,
 			Model model) {
-		Member member = memberService.findById(id);
-		model.addAttribute("member", member);
+		MemberDTO memberDTO = memberService.findById(id);
+		model.addAttribute("member", memberDTO);
 		return "/member/detail";
 	}
 	

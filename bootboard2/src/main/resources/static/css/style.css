@@ -13,8 +13,8 @@ header #logo{width: 250px; float: left; line-height: 80px;}
 #logo h1 a:hover{color: #eee;}
 header nav{width: 900px; float: right;}
 #topMenu{line-height: 80px; padding-left: 150px;}
-#topMenu li{float: left; margin: 0 20px;}
-#topMenu li a{color: #eee; padding: 0 20px;}
+#topMenu li{float: left; margin: 0 15px;}
+#topMenu li a{color: #eee; padding: 0 15px;}
 #topMenu li a:hover{color: #444;}
 
 /* index 스타일 */

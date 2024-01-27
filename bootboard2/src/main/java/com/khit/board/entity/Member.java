@@ -3,6 +3,8 @@ package com.khit.board.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.khit.board.dto.MemberDTO;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,10 +16,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@AllArgsConstructor //모든 필드를 매개변수를 가진 생성자
+@NoArgsConstructor  //기본 생성자
+@Builder
 @ToString(exclude="boardList")  //순환참조 방지
 @Setter
 @Getter
@@ -48,4 +56,18 @@ public class Member extends BaseEntity{
 	//cascade : 참조된 객체가 삭제되면 참조하는 객체도 삭제됨
 	@OneToMany(mappedBy="member", cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<>();
+	
+	//dto(view에 온 입력값) -> entity(db에 저장)
+	//회원 가입, 회원 수정
+	public static Member toSaveEntity(MemberDTO memberDTO) {
+		Member member = Member.builder()
+				.id(memberDTO.getId())
+				.memberId(memberDTO.getMemberId())
+				.password(memberDTO.getPassword())
+				.name(memberDTO.getName())
+				.role(memberDTO.getRole())
+				.build();
+		return member;
+	}
+	
 }
