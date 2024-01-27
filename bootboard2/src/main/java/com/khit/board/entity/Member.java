@@ -57,6 +57,10 @@ public class Member extends BaseEntity{
 	@OneToMany(mappedBy="member", cascade = CascadeType.ALL)
 	private List<Board> boardList = new ArrayList<>();
 	
+	//Reply와 연관 관계 설정
+	@OneToMany(mappedBy="member", cascade = CascadeType.ALL)
+	private List<Reply> replyList;
+	
 	//dto(view에 온 입력값) -> entity(db에 저장)
 	//회원 가입, 회원 수정
 	public static Member toSaveEntity(MemberDTO memberDTO) {

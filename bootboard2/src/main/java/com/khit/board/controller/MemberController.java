@@ -95,19 +95,19 @@ public class MemberController {
 	//회원 수정 페이지
 	//@AuthenticationPrincipal - 회원을 인가하는 클래스
 	@GetMapping("/member/update")
-	public String updateMember(
+	public String updateMemberForm(
 			@AuthenticationPrincipal SecurityUser principal,
 			Model model) {
-		Member member = memberService.findByMemberId(principal);
-		model.addAttribute("member", member);
+		MemberDTO memberDTO = memberService.findByMemberId(principal);
+		model.addAttribute("member", memberDTO);
 		return "/member/update";
 	}
 	
 	//회원 수정 처리 - 상세보기로 이동
 	@PostMapping("/member/update")
-	public String update(@ModelAttribute Member member) {
-		memberService.update(member);
-		return "redirect:/member/" + member.getId();
+	public String update(@ModelAttribute MemberDTO memberDTO) {
+		memberService.update(memberDTO);
+		return "redirect:/member/" + memberDTO.getId();
 	}
 	
 }

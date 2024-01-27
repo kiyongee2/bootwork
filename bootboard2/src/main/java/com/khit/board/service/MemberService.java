@@ -79,16 +79,22 @@ public class MemberService {
 		memberRepository.deleteById(id);
 	}
 
-	public Member findByMemberId(SecurityUser principal) {
+	public MemberDTO findByMemberId(SecurityUser principal) {
 		Optional<Member> member = memberRepository.findByMemberId(principal.getUsername());
-		return member.get();
+		//변환
+		MemberDTO memberDTO = MemberDTO.toSaveDTO(member.get());
+		return memberDTO;
 	}
 
-	public void update(Member member) {
+	public void update(MemberDTO memberDTO) {
 		//암호화, 권한 설정
-		String encPW = pwEncoder.encode(member.getPassword());
-		member.setPassword(encPW);
-		member.setRole(Role.ADMIN);
+		String encPW = pwEncoder.encode(memberDTO.getPassword());
+		memberDTO.setPassword(encPW);
+		memberDTO.setRole(Role.MEMBER);
+		
+		//변환
+		Member member = Member.toSaveEntity(memberDTO);
+		
 		memberRepository.save(member);
 	}
 }
