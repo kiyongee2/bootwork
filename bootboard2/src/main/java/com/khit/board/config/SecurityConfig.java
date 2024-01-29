@@ -31,7 +31,7 @@ public class SecurityConfig {
 				  .requestMatchers("/", "/css/**", "/images/**", "/js/**").permitAll()
 				  .requestMatchers("/board/write").authenticated()
 				  .requestMatchers("/member/list").hasAnyAuthority("ADMIN")
-				  .requestMatchers("/member/**", "/board/**").permitAll()
+				  .requestMatchers("/member/**", "/board/**", "/public-data/**").permitAll()
 				  .anyRequest().authenticated()
 				  )
 		          .formLogin(form -> form
