@@ -122,6 +122,7 @@ form input{padding: 5px;}
 
 /* 공공데이터 스타일 */
 #public-main{width: 1000px; margin: 0 auto;}
+#public-main h2{margin: 20px 0 10px;}
 #public-main button{padding: 4px; margin: 10px 0;}
 #public-main table{width: 1000px; margin: 0 auto;}
 #public-main table, th, td{border: 1px solid #ccc; 
