@@ -75,7 +75,7 @@ public class MemberController {
 		}
 		
 		memberService.save(memberDTO);
-		return "redirect:/member/login";
+		return "redirect:/login";
 	}
 	
 	//회원 목록
