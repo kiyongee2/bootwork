@@ -9,7 +9,7 @@
 </head>
 <body>
     <!-- footer.html 연결  -->
-	<div th:replace="~{/layout/header::header-fragment}"></div>
+	<div th:replace="~{header::header-fragment}"></div>
 	<div id="container">
 	   <section id="public-main">
 	     <div id="map" style="width:100%; height:400px;">
@@ -43,7 +43,7 @@
 	  </section>
 	</div>
 	<!-- footer.html 연결  -->
-	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	<div th:replace="~{footer::footer-fragment}"></div>
 <script>
     /* jquery 환경 - 버튼 클릭 이벤트 */
 	$(function(){

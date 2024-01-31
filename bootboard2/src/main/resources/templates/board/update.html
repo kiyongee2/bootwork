@@ -7,7 +7,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <div th:replace="~{/layout/header::header-fragment}"></div>
+    <div th:replace="~{header::header-fragment}"></div>
     <div id="container">
        <section id="board_detail">
          <h2>글 수정하기</h2>
@@ -44,6 +44,6 @@
        	</form>
        </section>
 	</div>
-	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	<div th:replace="~{footer::footer-fragment}"></div>
 </body>
 </html>

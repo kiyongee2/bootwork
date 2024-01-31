@@ -6,7 +6,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <div th:replace="~{/layout/header::header-fragment}"></div>
+    <div th:replace="~{header::header-fragment}"></div>
 	<div id="container">
 	  <section id="memberlist">
 		<h2>회원 목록</h2>
@@ -38,6 +38,6 @@
 		  </table>
 		</section>
 	</div>
-	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	<div th:replace="~{footer::footer-fragment}"></div>
 </body>
 </html>

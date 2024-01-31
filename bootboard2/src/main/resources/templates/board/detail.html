@@ -10,7 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div th:replace="~{/layout/header::header-fragment}"></div>
+    <div th:replace="~{header::header-fragment}"></div>
     <div id="container">
        <section id="board_detail">
          <h2>글 상세보기</h2>
@@ -86,7 +86,7 @@
        	
        </section>
 	</div>
-	<div th:replace="~{/layout/footer::footer-fragment}"></div>
+	<div th:replace="~{footer::footer-fragment}"></div>
 
 <script src="/js/reply.js"></script>
 </body>

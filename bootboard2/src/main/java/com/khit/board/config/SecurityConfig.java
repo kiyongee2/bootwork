@@ -28,22 +28,23 @@ public class SecurityConfig {
 		// 로그인이 필요: 그외의 경로
 		http
 		  .authorizeHttpRequests(authorize -> authorize
-				  .requestMatchers("/", "/css/**", "/images/**", "/js/**").permitAll()
+				  .requestMatchers("/", "/login", "/css/**", "/images/**", "/js/**").permitAll()
 				  .requestMatchers("/board/write").authenticated()
 				  .requestMatchers("/member/list").hasAnyAuthority("ADMIN")
 				  .requestMatchers("/member/**", "/board/**", "/public-data/**").permitAll()
 				  .anyRequest().authenticated()
 				  )
 		          .formLogin(form -> form
-		        		.loginPage("/member/login")
+		        		.loginPage("/login")
 		          	    .defaultSuccessUrl("/")
+		          	    .permitAll()
 		          );
 		
 		     //접근 권한 페이지
 		     http.exceptionHandling().accessDeniedPage("/auth/accessDenied");
 		          
-		     http.logout().logoutUrl("/member/logout")
-		            .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+		     http.logout().logoutUrl("/logout")
+		            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 		            .invalidateHttpSession(true) //세션 무효화
 		            .logoutSuccessUrl("/");
 		

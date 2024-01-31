@@ -17,7 +17,7 @@ public class ApiController {
 	
 	@GetMapping("/public-data/main")
 	public String dataMain() {
-		return "/public-data/main"; //public-data/main.html
+		return "public-data/main"; //public-data/main.html
 	}
 	
 	@GetMapping("/disaster.do")

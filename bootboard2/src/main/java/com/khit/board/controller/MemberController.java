@@ -25,10 +25,10 @@ public class MemberController {
 	
 	private final MemberService memberService;
 	
-    //로그인 페이지 요청 :  /member/login
-	@GetMapping("/member/login")
+    //로그인 페이지 요청 :  /login
+	@GetMapping("/login")
 	public String loginForm() {
-		return "/member/login";  //login.html
+		return "login";  //login.html
 	}
 	
 	//로그인 처리
@@ -52,15 +52,15 @@ public class MemberController {
 	}
 	
 	//로그아웃
-	@GetMapping("/member/logout")
+	/*@GetMapping("/logout")
 	public String logout() {
 		return "redirect:/";
-	}
+	}*/
 	
 	//회원 가입 페이지
 	@GetMapping("/member/join")
 	public String joinForm(MemberDTO memberDTO) {
-		return "/member/join";
+		return "member/join";
 	}
 	
 	//회원 가입 처리
@@ -71,7 +71,7 @@ public class MemberController {
 			BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			//에러가 있으면 회원 가입 페이지에 머무름
-			return "/member/join";
+			return "member/join";
 		}
 		
 		memberService.save(memberDTO);
@@ -83,7 +83,7 @@ public class MemberController {
 	public String getList(Model model) {
 		List<MemberDTO> memberDTOList = memberService.findAll();
 		model.addAttribute("memberList", memberDTOList);
-		return "/member/list";
+		return "member/list";
 	}
 	
 	//회원 상세 보기
@@ -92,7 +92,7 @@ public class MemberController {
 			Model model) {
 		MemberDTO memberDTO = memberService.findById(id);
 		model.addAttribute("member", memberDTO);
-		return "/member/detail";
+		return "member/detail";
 	}
 	
 	//회원 삭제
@@ -110,7 +110,7 @@ public class MemberController {
 			Model model) {
 		MemberDTO memberDTO = memberService.findByMemberId(principal);
 		model.addAttribute("member", memberDTO);
-		return "/member/update";
+		return "member/update";
 	}
 	
 	//회원 수정 처리 - 상세보기로 이동
