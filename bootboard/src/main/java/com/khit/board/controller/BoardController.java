@@ -34,7 +34,7 @@ public class BoardController {
 	//글쓰기 페이지
 	@GetMapping("/write")
 	public String writeForm(BoardDTO boardDTO) {
-		return "/board/write";  //write.html
+		return "board/write";  //write.html
 	}
 	
 	//글쓰기 처리
@@ -44,7 +44,7 @@ public class BoardController {
 			MultipartFile boardFile) throws Exception {
 		if(bindingResult.hasErrors()) { //에러가 있으면 글쓰기 폼으로 이동
 			log.info("has errors.....");
-			return "/board/write";
+			return "board/write";
 		}
 		//글쓰기 처리
 		boardService.save(boardDTO, boardFile);
@@ -56,7 +56,7 @@ public class BoardController {
 	public String getList(Model model) {
 		List<BoardDTO> boardDTOList = boardService.findAll();
 		model.addAttribute("boardList", boardDTOList);
-		return "/board/list";
+		return "board/list";
 	}
 	
 	//글목록(페이지)
@@ -91,7 +91,7 @@ public class BoardController {
 		model.addAttribute("kw", keyword);   //검색어 보내기
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
-		return "/board/pagelist";
+		return "board/pagelist";
 	}
 	
 	//글 상세보기
@@ -106,7 +106,7 @@ public class BoardController {
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute("board", boardDTO);
 		model.addAttribute("page", pageable.getPageNumber());
-		return "/board/detail";
+		return "board/detail";
 	}
 	
 	//글 삭제하기
@@ -123,15 +123,19 @@ public class BoardController {
 		//수정할 해당 페이지 가져오기
 		BoardDTO boardDTO = boardService.findById(id);
 		model.addAttribute("board", boardDTO);
-		return "/board/update";
+		return "board/update";
 	}
 	
 	//글 수정 처리
 	@PostMapping("/update")
 	public String update(@ModelAttribute BoardDTO boardDTO,
-			MultipartFile boardFile) throws Exception {
+			MultipartFile boardFile,
+			Model model) throws Exception {
 		//수정후에 글 상세보기로 이동
-		boardService.update(boardDTO, boardFile);
-		return "redirect:/board/" + boardDTO.getId();
+		BoardDTO upBoardDTO = boardService.update(boardDTO, boardFile);
+		//boardService.update(boardDTO, boardFile);
+		model.addAttribute("board", upBoardDTO);
+		return "board/detail";
+		//return "redirect:/board/" + boardDTO.getId(); //상세보기로 이동(새로고침)
 	}
 }

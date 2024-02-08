@@ -26,7 +26,7 @@ public class MemberController {
 	
 	@GetMapping("/member/join")
 	public String joinForm() {
-		return "/member/join";  //join.html
+		return "member/join";  //join.html
 	}
 	
 	//회원 가입
@@ -43,7 +43,7 @@ public class MemberController {
 		//db에서 꺼내와서 memberDTO로 반환할 것
 		List<MemberDTO> memberDTOList = memberService.findAll();
 		model.addAttribute("memberList", memberDTOList);
-		return "/member/list";  //list.html
+		return "member/list";  //list.html
 	}
 	
 	//회원 상세보기
@@ -53,7 +53,7 @@ public class MemberController {
 			Model model) {
 		MemberDTO memberDTO = memberService.findById(id);
 		model.addAttribute("member", memberDTO);
-		return "/member/detail";  //detail.html
+		return "member/detail";  //detail.html
 	}
 	
 	//회원 삭제하기
@@ -66,7 +66,7 @@ public class MemberController {
 	//로그인 페이지 요청
 	@GetMapping("/member/login")
 	public String loginForm() {
-		return "/member/login";  //login.html
+		return "member/login";  //login.html
 	}
 	
 	//로그인 처리
@@ -83,7 +83,7 @@ public class MemberController {
 		}else {
 			String error = "아이디나 비밀번호를 확인해 주세요";
 			model.addAttribute("error", error);
-			return "/member/login";  //login.html
+			return "member/login";  //login.html
 		}
 	}
 	
@@ -100,7 +100,7 @@ public class MemberController {
 		String email = (String)session.getAttribute("sessionEmail");
 		MemberDTO memberDTO = memberService.findByMemberEmail(email);
 		model.addAttribute("member", memberDTO);
-		return "/member/update"; //update.html
+		return "member/update"; //update.html
 	}
 	
 	//수정 처리 - 상세보기

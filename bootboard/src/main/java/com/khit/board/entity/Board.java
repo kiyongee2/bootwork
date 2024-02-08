@@ -78,6 +78,7 @@ public class Board extends BaseEntity{ //테이블이 생성되는 역할을 하
 				.boardTitle(boardDTO.getBoardTitle())
 				.boardWriter(boardDTO.getBoardWriter())
 				.boardContent(boardDTO.getBoardContent())
+				.boardHits(boardDTO.getBoardHits())
 				.filename(boardDTO.getFilename())
 				.filepath(boardDTO.getFilepath())
 				.boardHits(boardDTO.getBoardHits())

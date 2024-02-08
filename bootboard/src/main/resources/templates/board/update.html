@@ -30,7 +30,7 @@
        		  	<td>
        		  		<textarea rows="5" cols="50" name="boardContent"
        		  			th:text="${board.boardContent}"></textarea>
-       		  		<img th:src="@{${board.filepath}}" alt="">
+       		  		<img th:src="@{|/upload/${board.filename}|}" alt="file">
        		  	</td>
        		  </tr>
        		  <tr>
