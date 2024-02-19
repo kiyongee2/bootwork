@@ -1,0 +1,103 @@
+[ 스프링부트 배포 ]
+프로젝트 - 우클릭 - Run As - Maven Install  -> 프로젝트.jar 생성
+target 폴더 > 프로젝트.jar > 우클릭 > Show in Local Terminal > Terminal
+ *** 실행 명령어 ***
+target>java -jar 프로젝트.jar
+
+AWS(아마존웹서비스) - 클라우드 배포
+1년 무료 - EC2 (과금 - 5000원) - 프리티어
+3개월 무료 - LightSail($5)
+
+1. 회원 가입
+   - 이메일 인증코드 확인
+   - 회원 정보 입력 : 주소(네이버 주소 변환기)
+   - 해외 결제 가능한 카드 입력($1 결재후 환불)
+   - 이메일, 비밀번호 로그인 : 콘솔에 로그인
+ 
+2. 리눅스 서버(우분투-ubuntu) 생성
+   LightSail 검색
+   - create instance
+   - Operating System(OS) only -> Ubuntu 22.04 > 5$ 이상
+
+   ** 리눅스 명령어 **
+   - clear
+   - hostname 변경
+   - sudo hostnamectl set-hostname 본인 닉네임
+   - exit
+   - ubuntu@giyongee2
+   - date
+   - sudo timedatectl set-timezone Asia/Seoul
+   - pwd(현재 위치)
+
+   - khit 디렉터리 생성
+     mkdir khit
+     ls
+     cd khit
+     ubuntu@giyongee2:~/khit$
+     상위 디렉터리로 이동(한칸띄고) : cd ..
+
+   - Java 설치: openjdk-17
+  $ java
+  $ sudo apt update
+  $ sudo apt-cache search jdk
+  $ sudo apt-cache search jdk | grep openjdk-17
+  $ sudo apt install openjdk-17-jdk
+  $ java --version
+
+   - 인스턴스 : 
+      1. 비밀키 다운로드 .pem
+      2. 8080포트 open
+
+3. 파일질라로 aws에 업로드 
+  프로토콜:SFTP
+  호스트: 고정IP
+  로그온유형:키파일
+  사용자:USER NAME
+  키파일: download default key - pem 다운로드후 선택
+
+4.  testweb 프로젝트 생성
+    jar 파일로 빌드
+   - java -jar testweb.jar 
+   - 브라우저 실행(고정IP:8080)
+
+   - 우분투 서버를 종료하면 연결 끊김
+   - nohup 명령어 추가
+   - nohup java -jar testweb.jar
+
+   ** 프로세스 삭제하기(kill)
+   - ps -ef
+   - ps -ef | grep testweb
+   - kill -9 프로세스번호
+
+5. mysql 설치방법
+1. 내장 sql
+2. aws에 제공하는 RDS(과금)
+
+*** RDS로 mysql 설치
+ - RDS 대시보드 -> 데이터베이스 생성
+- MySQL 
+- 프리티어
+- DB인스턴스: khitdb
+- user: khit
+- 비번(8자이상)
+- 연결 : EC2 컴퓨팅 리소스에 연결안함, 퍼블릭엑세스: 예
+- 보안 그룹:  sg-fdfdf-default > 인바운드 규칙 추가 >mysql 3306
+
+** workbench 설정
+- hostname:khitdb.cxqwcgqi8gx9.ap-northeast-2.rds.amazonaws.com
+- port: 3306
+- user:khit
+-password:045901kim#
+
+-db 생성 
+create database bootdb;
+use bootdb;
+
+
+
+
+
+
+
+
+
